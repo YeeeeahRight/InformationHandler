@@ -12,18 +12,19 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-public class ParagraphParserText {
+public class ParagraphParserTest {
     private final static String FIRST_WORD = "Sentence";
     private final static String SECOND_WORD = "[12+]";
     private final static String THIRD_WORD = "size.";
     private final static String FIRST_SENTENCE = FIRST_WORD + " " + SECOND_WORD + " " + THIRD_WORD;
-        private final static String SECOND_SENTENCE = SECOND_WORD + " " + FIRST_WORD + " " + THIRD_WORD;
-    private final static TextLeaf FIRST_LEAF = new TextLeaf(TextType.WORD, "Sentence");
-    private final static TextLeaf SECOND_LEAF = new TextLeaf(TextType.EXPRESSION, "[12+]");
-    private final static TextLeaf THIRD_LEAF = new TextLeaf(TextType.WORD, "size.");
+    private final static String SECOND_SENTENCE = SECOND_WORD + " " + FIRST_WORD + " " + THIRD_WORD;
+    private final static String PARAGRAPH = FIRST_SENTENCE + SECOND_SENTENCE;
+
+    private final static TextLeaf FIRST_LEAF = new TextLeaf(TextType.WORD, FIRST_WORD);
+    private final static TextLeaf SECOND_LEAF = new TextLeaf(TextType.EXPRESSION, SECOND_WORD);
+    private final static TextLeaf THIRD_LEAF = new TextLeaf(TextType.WORD, THIRD_WORD);
     private final static TextComposite FIRST_SENTENCE_COMPOSITE = new TextComposite();
     private final static TextComposite SECOND_SENTENCE_COMPOSITE = new TextComposite();
-    private final static String PARAGRAPH = FIRST_SENTENCE + SECOND_SENTENCE;
     private final static TextComposite PARAGRAPH_COMPOSITE = new TextComposite();
 
     private final SentenceParser sentenceParser = Mockito.mock(SentenceParser.class);

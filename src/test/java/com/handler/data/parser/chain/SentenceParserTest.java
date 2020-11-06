@@ -11,11 +11,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-public class SentenceParserText {
+public class SentenceParserTest {
     private final static String FIRST_WORD = "Sentence";
     private final static String SECOND_WORD = "[12+]";
     private final static String THIRD_WORD = "size.";
     private final static String SENTENCE = FIRST_WORD + " " + SECOND_WORD + " " + THIRD_WORD;
+
     private final static TextLeaf FIRST_LEAF = new TextLeaf(TextType.WORD, "Sentence");
     private final static TextLeaf SECOND_LEAF = new TextLeaf(TextType.EXPRESSION, "[12+]");
     private final static TextLeaf THIRD_LEAF = new TextLeaf(TextType.WORD, "size.");

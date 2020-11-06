@@ -17,16 +17,17 @@ public class TextParserTest {
     private final static String THIRD_WORD = "size.";
     private final static String FIRST_SENTENCE = FIRST_WORD + " " + SECOND_WORD + " " + THIRD_WORD;
     private final static String SECOND_SENTENCE = SECOND_WORD + " " + FIRST_WORD + " " + THIRD_WORD;
+    private final static String FIRST_PARAGRAPH = FIRST_SENTENCE + SECOND_SENTENCE;
+    private final static String SECOND_PARAGRAPH = SECOND_SENTENCE + FIRST_SENTENCE;
+    private final static String TEXT = FIRST_PARAGRAPH + "\r\n" + SECOND_PARAGRAPH;
+
     private final static TextLeaf FIRST_LEAF = new TextLeaf(TextType.WORD, "Sentence");
     private final static TextLeaf SECOND_LEAF = new TextLeaf(TextType.EXPRESSION, "[12+]");
     private final static TextLeaf THIRD_LEAF = new TextLeaf(TextType.WORD, "size.");
     private final static TextComposite FIRST_SENTENCE_COMPOSITE = new TextComposite();
     private final static TextComposite SECOND_SENTENCE_COMPOSITE = new TextComposite();
-    private final static String FIRST_PARAGRAPH = FIRST_SENTENCE + SECOND_SENTENCE;
     private final static TextComposite FIRST_PARAGRAPH_COMPOSITE = new TextComposite();
-    private final static String SECOND_PARAGRAPH = SECOND_SENTENCE + FIRST_SENTENCE;
     private final static TextComposite SECOND_PARAGRAPH_COMPOSITE = new TextComposite();
-    private final static String TEXT = FIRST_PARAGRAPH + "\r\n" + SECOND_PARAGRAPH;
     private final static TextComposite TEXT_COMPOSITE = new TextComposite();
 
     private final ParagraphParser paragraphParser = Mockito.mock(ParagraphParser.class);
