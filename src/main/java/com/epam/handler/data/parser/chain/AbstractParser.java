@@ -15,4 +15,23 @@ public abstract class AbstractParser implements Parser {
     }
 
     public abstract TextComponent parse(String text);
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof AbstractParser)) {
+            return false;
+        }
+
+        AbstractParser that = (AbstractParser) o;
+
+        return getNextParser() != null ? getNextParser().equals(that.getNextParser()) : that.getNextParser() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return getNextParser() != null ? getNextParser().hashCode() : 0;
+    }
 }
