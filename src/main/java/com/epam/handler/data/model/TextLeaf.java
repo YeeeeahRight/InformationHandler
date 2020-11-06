@@ -24,4 +24,28 @@ public class TextLeaf implements TextComponent {
     public String toString() {
         return "TextLeaf{type = " + textType + ", data = " + data + '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof TextLeaf)) {
+            return false;
+        }
+
+        TextLeaf textLeaf = (TextLeaf) o;
+
+        if (getTextType() != textLeaf.getTextType()) {
+            return false;
+        }
+        return getData() != null ? getData().equals(textLeaf.getData()) : textLeaf.getData() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getTextType() != null ? getTextType().hashCode() : 0;
+        result = 31 * result + (getData() != null ? getData().hashCode() : 0);
+        return result;
+    }
 }
