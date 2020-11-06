@@ -12,6 +12,7 @@ public class WordParserTest {
     private final static String WORD_DATA = "Word";
     private final static TextLeaf WORD_LEAF = new TextLeaf(TextType.WORD, WORD_DATA);
     private final static String EXPRESSION_DATA = "[32+]";
+    private final static String SPACES_EXPRESSION_DATA = "[3 2 +]";
     private final static TextLeaf EXPRESSION_LEAF = new TextLeaf(TextType.EXPRESSION, EXPRESSION_DATA);
 
     private final WordParser wordParser = new WordParser();
@@ -36,6 +37,18 @@ public class WordParserTest {
         TextLeaf actualLeaf;
         //when
         textComponent = wordParser.parse(EXPRESSION_DATA);
+        actualLeaf = ((TextLeaf)textComponent);
+        //then
+        Assert.assertEquals(EXPRESSION_LEAF, actualLeaf);
+    }
+
+    @Test
+    public void testParseShouldReturnExpressionLeafWhenDataIsExpressionWithSpaces() {
+        //given
+        TextComponent textComponent;
+        TextLeaf actualLeaf;
+        //when
+        textComponent = wordParser.parse(SPACES_EXPRESSION_DATA);
         actualLeaf = ((TextLeaf)textComponent);
         //then
         Assert.assertEquals(EXPRESSION_LEAF, actualLeaf);
