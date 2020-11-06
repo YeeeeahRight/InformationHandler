@@ -25,4 +25,23 @@ public class TextComposite implements TextComponent {
     public String toString() {
         return "TextComposite{" + textComponents + '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof TextComposite)) {
+            return false;
+        }
+
+        TextComposite that = (TextComposite) o;
+
+        return textComponents.equals(that.textComponents);
+    }
+
+    @Override
+    public int hashCode() {
+        return textComponents.hashCode();
+    }
 }
