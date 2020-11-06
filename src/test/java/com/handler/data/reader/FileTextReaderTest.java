@@ -5,26 +5,40 @@ import com.epam.handler.exceptions.TextReaderException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class FileTextReaderTest {
-    private static final String FILE_DATA = "Hye. My name is Sasha!\r\nNext paragraph... OK!\r\nBye.";
     private static final String VALID_FILE_PATH = "src/test/resources/text.txt";
     private static final String INVALID_FILE_PATH = "src/test/resources/invalid.txt";
 
     private final FileTextReader fileDataReader = new FileTextReader();
 
     @Test
-    public void testReadTextShouldReadWhenFileIsExist() throws TextReaderException {
+    public void testReadTextShouldReadWhenFileIsExist() throws TextReaderException, IOException {
         //given
-        String actualData;
+        String expectedData = readFileLines(VALID_FILE_PATH);
         //when
-        actualData = fileDataReader.readText(VALID_FILE_PATH);
+        String actualData = fileDataReader.readText(VALID_FILE_PATH);
         //then
-        Assert.assertEquals(FILE_DATA, actualData);
+        Assert.assertEquals(expectedData, actualData);
+    }
+
+    private String readFileLines(String filePath) throws IOException {
+        StringBuilder lines = new StringBuilder();
+        BufferedReader fileReader = new BufferedReader(new FileReader(filePath));
+        String line = fileReader.readLine();
+        while (line != null) {
+            lines.append(line);
+            line = fileReader.readLine();
+        }
+        return lines.toString();
     }
 
     @Test(expected = TextReaderException.class)//then
     public void testReadTextShouldThrowExceptionWhenFileIsNotExist() throws TextReaderException {
-        //whe
+        //when
         fileDataReader.readText(INVALID_FILE_PATH);
     }
 }
