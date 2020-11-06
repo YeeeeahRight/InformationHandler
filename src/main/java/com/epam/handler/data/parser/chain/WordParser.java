@@ -17,10 +17,21 @@ public class WordParser extends AbstractParser {
         char lastSymbol = text.charAt(lastSymbolIndex);
         TextType textType;
         if (firstSymbol == '[' && lastSymbol == ']') {
+            text = removeSpaces(text);
             textType = TextType.EXPRESSION;
         } else {
             textType = TextType.WORD;
         }
         return new TextLeaf(textType, text);
+    }
+
+    private String removeSpaces(String expression) {
+        StringBuilder validExpression = new StringBuilder();
+        for (Character character : expression.toCharArray()) {
+            if (character != ' ') {
+                validExpression.append(character);
+            }
+        }
+        return validExpression.toString();
     }
 }
