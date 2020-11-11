@@ -3,20 +3,18 @@ package com.handler.data.parser.chain;
 import com.epam.handler.data.model.TextComponent;
 import com.epam.handler.data.model.TextLeaf;
 import com.epam.handler.data.parser.chain.WordParser;
-import com.epam.handler.enums.TextType;
+import com.epam.handler.enums.LeafType;
 import org.junit.Assert;
 import org.junit.Test;
 
-
 public class WordParserTest {
     private final static String WORD_DATA = "Word";
-    private final static TextLeaf WORD_LEAF = new TextLeaf(TextType.WORD, WORD_DATA);
+    private final static TextLeaf WORD_LEAF = new TextLeaf(LeafType.WORD, WORD_DATA);
     private final static String EXPRESSION_DATA = "[32+]";
     private final static String SPACES_EXPRESSION_DATA = "[3 2 +]";
-    private final static TextLeaf EXPRESSION_LEAF = new TextLeaf(TextType.EXPRESSION, EXPRESSION_DATA);
+    private final static TextLeaf EXPRESSION_LEAF = new TextLeaf(LeafType.EXPRESSION, EXPRESSION_DATA);
 
     private final WordParser wordParser = new WordParser();
-
 
     @Test
     public void testParseShouldReturnWordLeafWhenDataIsWord() {

@@ -5,7 +5,7 @@ import com.epam.handler.data.model.TextComposite;
 import com.epam.handler.data.model.TextLeaf;
 import com.epam.handler.data.parser.chain.SentenceParser;
 import com.epam.handler.data.parser.chain.WordParser;
-import com.epam.handler.enums.TextType;
+import com.epam.handler.enums.LeafType;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,9 +17,9 @@ public class SentenceParserTest {
     private final static String THIRD_WORD = "size.";
     private final static String SENTENCE = FIRST_WORD + " " + SECOND_WORD + " " + THIRD_WORD;
 
-    private final static TextLeaf FIRST_LEAF = new TextLeaf(TextType.WORD, "Sentence");
-    private final static TextLeaf SECOND_LEAF = new TextLeaf(TextType.EXPRESSION, "[12+]");
-    private final static TextLeaf THIRD_LEAF = new TextLeaf(TextType.WORD, "size.");
+    private final static TextLeaf FIRST_LEAF = new TextLeaf(LeafType.WORD, "Sentence");
+    private final static TextLeaf SECOND_LEAF = new TextLeaf(LeafType.EXPRESSION, "[12+]");
+    private final static TextLeaf THIRD_LEAF = new TextLeaf(LeafType.WORD, "size.");
     private final static TextComposite SENTENCE_COMPOSITE = new TextComposite();
 
     private final WordParser wordParser = Mockito.mock(WordParser.class);

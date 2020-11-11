@@ -5,7 +5,7 @@ import com.epam.handler.data.model.TextComposite;
 import com.epam.handler.data.model.TextLeaf;
 import com.epam.handler.data.parser.chain.ParagraphParser;
 import com.epam.handler.data.parser.chain.TextParser;
-import com.epam.handler.enums.TextType;
+import com.epam.handler.enums.LeafType;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,13 +17,13 @@ public class TextParserTest {
     private final static String THIRD_WORD = "size.";
     private final static String FIRST_SENTENCE = FIRST_WORD + " " + SECOND_WORD + " " + THIRD_WORD;
     private final static String SECOND_SENTENCE = SECOND_WORD + " " + FIRST_WORD + " " + THIRD_WORD;
-    private final static String FIRST_PARAGRAPH = FIRST_SENTENCE + SECOND_SENTENCE;
+    private final static String FIRST_PARAGRAPH = FIRST_SENTENCE + SECOND_SENTENCE + "\n";
     private final static String SECOND_PARAGRAPH = SECOND_SENTENCE + FIRST_SENTENCE;
-    private final static String TEXT = FIRST_PARAGRAPH + "\r\n" + SECOND_PARAGRAPH;
+    private final static String TEXT = FIRST_PARAGRAPH + SECOND_PARAGRAPH;
 
-    private final static TextLeaf FIRST_LEAF = new TextLeaf(TextType.WORD, "Sentence");
-    private final static TextLeaf SECOND_LEAF = new TextLeaf(TextType.EXPRESSION, "[12+]");
-    private final static TextLeaf THIRD_LEAF = new TextLeaf(TextType.WORD, "size.");
+    private final static TextLeaf FIRST_LEAF = new TextLeaf(LeafType.WORD, FIRST_WORD);
+    private final static TextLeaf SECOND_LEAF = new TextLeaf(LeafType.EXPRESSION, SECOND_WORD);
+    private final static TextLeaf LAST_PARAGRAPH_LEAF = new TextLeaf(LeafType.WORD, THIRD_WORD + "\n");
     private final static TextComposite FIRST_SENTENCE_COMPOSITE = new TextComposite();
     private final static TextComposite SECOND_SENTENCE_COMPOSITE = new TextComposite();
     private final static TextComposite FIRST_PARAGRAPH_COMPOSITE = new TextComposite();
@@ -37,11 +37,10 @@ public class TextParserTest {
     public void initialize() {
         FIRST_SENTENCE_COMPOSITE.addChild(FIRST_LEAF);
         FIRST_SENTENCE_COMPOSITE.addChild(SECOND_LEAF);
-        FIRST_SENTENCE_COMPOSITE.addChild(THIRD_LEAF);
+        FIRST_SENTENCE_COMPOSITE.addChild(LAST_PARAGRAPH_LEAF);
 
         SECOND_SENTENCE_COMPOSITE.addChild(SECOND_LEAF);
         SECOND_SENTENCE_COMPOSITE.addChild(FIRST_LEAF);
-        SECOND_SENTENCE_COMPOSITE.addChild(THIRD_LEAF);
 
         FIRST_PARAGRAPH_COMPOSITE.addChild(FIRST_SENTENCE_COMPOSITE);
         FIRST_PARAGRAPH_COMPOSITE.addChild(SECOND_SENTENCE_COMPOSITE);
