@@ -1,7 +1,6 @@
 package com.epam.handler.enums;
 
-public enum TextType {
-    COMPOSITE,
+public enum LeafType {
     WORD,
     EXPRESSION,
 
