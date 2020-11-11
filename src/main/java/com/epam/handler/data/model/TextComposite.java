@@ -1,24 +1,21 @@
 package com.epam.handler.data.model;
 
-import com.epam.handler.enums.TextType;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class TextComposite implements TextComponent {
     private final List<TextComponent> textComponents = new ArrayList<>();
 
-    @Override
-    public TextType getTextType() {
-        return TextType.COMPOSITE;
-    }
-
-    public List<TextComponent> getAllChild() {
+    public List<TextComponent> getChildren() {
         return textComponents;
     }
 
     public void addChild(TextComponent textComponent) {
         textComponents.add(textComponent);
+    }
+
+    public void addChildren(List<TextComponent> textComponents) {
+        this.textComponents.addAll(textComponents);
     }
 
     @Override

@@ -1,19 +1,21 @@
 package com.epam.handler.data.model;
 
-import com.epam.handler.enums.TextType;
+import com.epam.handler.enums.LeafType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TextLeaf implements TextComponent {
-    private final TextType textType;
+    private final LeafType leafType;
     private final String data;
 
-    public TextLeaf(TextType textType,String data) {
-        this.textType = textType;
+    public TextLeaf(LeafType leafType, String data) {
+        this.leafType = leafType;
         this.data = data;
     }
 
-    @Override
-    public TextType getTextType() {
-        return textType;
+    public LeafType getLeafType() {
+        return leafType;
     }
 
     public String getData() {
@@ -22,7 +24,7 @@ public class TextLeaf implements TextComponent {
 
     @Override
     public String toString() {
-        return "TextLeaf{type = " + textType + ", data = " + data + '}';
+        return "TextLeaf{type = " + leafType + ", data = " + data + '}';
     }
 
     @Override
@@ -36,7 +38,7 @@ public class TextLeaf implements TextComponent {
 
         TextLeaf textLeaf = (TextLeaf) o;
 
-        if (getTextType() != textLeaf.getTextType()) {
+        if (getLeafType() != textLeaf.getLeafType()) {
             return false;
         }
         return getData() != null ? getData().equals(textLeaf.getData()) : textLeaf.getData() == null;
@@ -44,8 +46,13 @@ public class TextLeaf implements TextComponent {
 
     @Override
     public int hashCode() {
-        int result = getTextType() != null ? getTextType().hashCode() : 0;
+        int result = getLeafType() != null ? getLeafType().hashCode() : 0;
         result = 31 * result + (getData() != null ? getData().hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public List<TextComponent> getChildren() {
+        return new ArrayList<>(); //return empty list
     }
 }

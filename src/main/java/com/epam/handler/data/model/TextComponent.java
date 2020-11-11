@@ -1,8 +1,7 @@
 package com.epam.handler.data.model;
 
-
-import com.epam.handler.enums.TextType;
+import java.util.List;
 
 public interface TextComponent {
-    TextType getTextType();
+    List<TextComponent> getChildren();
 }
