@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class FileTextReaderTest {
+    private static final String LINE_SEPARATOR = "\r\n";
     private static final String VALID_FILE_PATH = "src/test/resources/text.txt";
     private static final String INVALID_FILE_PATH = "src/test/resources/invalid.txt";
 
@@ -31,6 +32,9 @@ public class FileTextReaderTest {
         String line = fileReader.readLine();
         while (line != null) {
             lines.append(line);
+            if (fileReader.ready()) {
+                lines.append(LINE_SEPARATOR);
+            }
             line = fileReader.readLine();
         }
         return lines.toString();
