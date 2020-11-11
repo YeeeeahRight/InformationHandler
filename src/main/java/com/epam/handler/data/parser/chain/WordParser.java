@@ -2,10 +2,9 @@ package com.epam.handler.data.parser.chain;
 
 import com.epam.handler.data.model.TextComponent;
 import com.epam.handler.data.model.TextLeaf;
-import com.epam.handler.enums.TextType;
+import com.epam.handler.enums.LeafType;
 
 public class WordParser extends AbstractParser {
-
     public WordParser() {
         super(null);
     }
@@ -15,14 +14,14 @@ public class WordParser extends AbstractParser {
         char firstSymbol = text.charAt(0);
         int lastSymbolIndex = text.length() - 1;
         char lastSymbol = text.charAt(lastSymbolIndex);
-        TextType textType;
+        LeafType leafType;
         if (firstSymbol == '[' && lastSymbol == ']') {
             text = removeSpaces(text);
-            textType = TextType.EXPRESSION;
+            leafType = LeafType.EXPRESSION;
         } else {
-            textType = TextType.WORD;
+            leafType = LeafType.WORD;
         }
-        return new TextLeaf(textType, text);
+        return new TextLeaf(leafType, text);
     }
 
     private String removeSpaces(String expression) {
