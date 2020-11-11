@@ -6,7 +6,7 @@ import com.epam.handler.enums.LeafType;
 
 public class WordParser extends AbstractParser {
     public WordParser() {
-        super(null);
+        super(null); //last parser
     }
 
     @Override

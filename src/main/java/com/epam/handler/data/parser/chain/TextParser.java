@@ -8,8 +8,8 @@ public class TextParser extends AbstractParser {
     private static final Logger LOGGER = Logger.getLogger(TextParser.class);
     private static final String PARAGRAPH_SPLITERATOR = "[^\n]+\n?";
 
-    public TextParser(AbstractParser successor) {
-        super(successor);
+    public TextParser(AbstractParser nextParser) {
+        super(nextParser);
     }
 
     @Override

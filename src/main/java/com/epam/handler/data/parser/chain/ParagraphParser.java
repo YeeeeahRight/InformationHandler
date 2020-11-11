@@ -8,8 +8,8 @@ public class ParagraphParser extends AbstractParser {
     private static final Logger LOGGER = Logger.getLogger(TextParser.class);
     private static final String SENTENCE_PATTERN = "[^!?.]+[!?.](\\.{2})?([^\\n\\w]*\\n)?";
 
-    public ParagraphParser(AbstractParser successor) {
-        super(successor);
+    public ParagraphParser(AbstractParser nextParser) {
+        super(nextParser);
     }
 
     @Override
