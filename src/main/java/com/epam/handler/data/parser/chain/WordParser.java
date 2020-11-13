@@ -15,21 +15,10 @@ public class WordParser extends AbstractParser {
         int lastSymbolIndex = text.length() - 1;
         char lastSymbol = text.charAt(lastSymbolIndex);
         if (firstSymbol == '[' && lastSymbol == ']') {
-            text = removeSpaces(text);
             textLeaf = TextLeaf.createExpression(text);
         } else {
             textLeaf = TextLeaf.createWord(text);
         }
         return textLeaf;
-    }
-
-    private String removeSpaces(String expression) {
-        StringBuilder validExpression = new StringBuilder();
-        for (Character character : expression.toCharArray()) {
-            if (character != ' ') {
-                validExpression.append(character);
-            }
-        }
-        return validExpression.toString();
     }
 }
