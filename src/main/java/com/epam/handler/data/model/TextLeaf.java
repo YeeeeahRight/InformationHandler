@@ -9,9 +9,17 @@ public class TextLeaf implements TextComponent {
     private final LeafType leafType;
     private final String data;
 
-    public TextLeaf(LeafType leafType, String data) {
+    private TextLeaf(LeafType leafType, String data) {
         this.leafType = leafType;
         this.data = data;
+    }
+
+    public static TextLeaf createWord(String value)  {
+        return new TextLeaf(LeafType.WORD, value);
+    }
+
+    public static TextLeaf createExpression(String value) {
+        return new TextLeaf(LeafType.EXPRESSION, value);
     }
 
     public LeafType getLeafType() {
