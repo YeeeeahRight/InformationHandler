@@ -1,6 +1,7 @@
 package com.handler.data.reader;
 
 import com.epam.handler.data.reader.FileTextReader;
+import com.epam.handler.data.reader.TextReader;
 import com.epam.handler.exceptions.TextReaderException;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,14 +15,14 @@ public class FileTextReaderTest {
     private static final String VALID_FILE_PATH = "src/test/resources/text.txt";
     private static final String INVALID_FILE_PATH = "src/test/resources/invalid.txt";
 
-    private final FileTextReader fileDataReader = new FileTextReader();
+    private final TextReader fileDataReader = new FileTextReader();
 
     @Test
     public void testReadTextShouldReadWhenFileIsExist() throws TextReaderException, IOException {
         //given
         String expectedData = readFileLines(VALID_FILE_PATH);
         //when
-        String actualData = fileDataReader.readText(VALID_FILE_PATH);
+        String actualData = fileDataReader.read(VALID_FILE_PATH);
         //then
         Assert.assertEquals(expectedData, actualData);
     }
@@ -43,6 +44,6 @@ public class FileTextReaderTest {
     @Test(expected = TextReaderException.class)//then
     public void testReadTextShouldThrowExceptionWhenFileIsNotExist() throws TextReaderException {
         //when
-        fileDataReader.readText(INVALID_FILE_PATH);
+        fileDataReader.read(INVALID_FILE_PATH);
     }
 }
