@@ -8,9 +8,9 @@ import com.epam.handler.data.model.TextLeaf;
 import java.util.Arrays;
 
 public class TextProcessorHelper {
-    private static final TextLeaf FIRST_LEAF = TextLeaf.createWord("Goes ");
-    private static final TextLeaf SECOND_LEAF = TextLeaf.createWord("[10 14 +] ");
-    private static final TextLeaf THIRD_LEAF = TextLeaf.createWord("hour... ");
+    private static final TextLeaf FIRST_LEAF = TextLeaf.createWord("File");
+    private static final TextLeaf SECOND_LEAF = TextLeaf.createWord("[2 3*]");
+    private static final TextLeaf THIRD_LEAF = TextLeaf.createWord("Megabytes.");
 
     public static TextComponent getTextForRestore() {
         TextComposite sentence = new TextComposite();
@@ -72,6 +72,6 @@ public class TextProcessorHelper {
     }
 
     public static String getExpectedRestoredText() {
-        return "Goes [10 14 +]  hour...";
+        return "File [2 3*] Megabytes. ";
     }
 }
