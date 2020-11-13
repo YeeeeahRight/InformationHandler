@@ -1,7 +1,5 @@
 package com.epam.handler.data.model;
 
-import com.epam.handler.enums.LeafType;
-
 import java.util.ArrayList;
 import java.util.List;
 

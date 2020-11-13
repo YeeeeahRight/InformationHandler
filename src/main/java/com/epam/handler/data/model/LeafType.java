@@ -1,4 +1,4 @@
-package com.epam.handler.enums;
+package com.epam.handler.data.model;
 
 public enum LeafType {
     WORD,
