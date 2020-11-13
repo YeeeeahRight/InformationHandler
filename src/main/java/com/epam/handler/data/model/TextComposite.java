@@ -7,7 +7,7 @@ public class TextComposite implements TextComponent {
     private final List<TextComponent> textComponents = new ArrayList<>();
 
     public List<TextComponent> getChildren() {
-        return textComponents;
+        return new ArrayList<>(textComponents);
     }
 
     public void addChild(TextComponent textComponent) {
