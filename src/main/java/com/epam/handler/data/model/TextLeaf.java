@@ -30,7 +30,7 @@ public class TextLeaf implements TextComponent {
 
     @Override
     public String toString() {
-        return "TextLeaf{type = " + leafType + ", data = " + data + '}';
+        return data;
     }
 
     @Override

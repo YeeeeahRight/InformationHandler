@@ -5,10 +5,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class ExpressionCalculatorTest {
-    private static final String PLUS_EXPRESSION = "7 5 +";
-    private static final String MINUS_EXPRESSION = "7 5 -";
-    private static final String MULTIPLY_EXPRESSION = "7 5 *";
-    private static final String DIVIDE_EXPRESSION = "10 5 /";
+    private static final String PLUS_EXPRESSION = "[7 5 +]";
+    private static final String MINUS_EXPRESSION = "[7 5 -]";
+    private static final String MULTIPLY_EXPRESSION = "[7 5 *]";
+    private static final String DIVIDE_EXPRESSION = "[10 5 /]";
     private static final int EXPECTED_PLUS_RESULT = 12;
     private static final int EXPECTED_MINUS_RESULT = 2;
     private static final int EXPECTED_MULTIPLY_RESULT = 35;

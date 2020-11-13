@@ -1,5 +1,6 @@
 package com.epam.handler.data.reader;
 
+import com.epam.handler.application.Main;
 import com.epam.handler.exceptions.TextReaderException;
 import org.apache.log4j.Logger;
 
@@ -13,6 +14,7 @@ public class FileTextReader implements TextReader{
     //know I could work with BufferedReader or just use Java 8,
     //but I want to read all characters at once (i mean \r\n)
     public String read(String filePath) throws TextReaderException {
+        LOGGER.info("Reading text from " + filePath + " file...");
         FileReader fileReader = null;
         CharArrayWriter charArray = new CharArrayWriter();
         try {
@@ -34,6 +36,7 @@ public class FileTextReader implements TextReader{
                 }
             }
         }
+        LOGGER.info("Text has been read!");
         return charArray.toString();
     }
 }

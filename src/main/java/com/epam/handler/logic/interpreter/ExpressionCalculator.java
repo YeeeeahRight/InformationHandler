@@ -1,22 +1,34 @@
 package com.epam.handler.logic.interpreter;
 
 import com.epam.handler.logic.interpreter.expressions.*;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class ExpressionCalculator {
+    private static final Logger LOGGER = Logger.getLogger(ExpressionCalculator.class);
     private static final int FIRST_CHAR_INDEX = 0;
+    private static final int SECOND_CHAR_INDEX = 1;
     private static final String EXPRESSION_SEPARATOR = " ";
 
     public int calculate(String expression) {
+        LOGGER.info("Calculating this expression: " + expression);
+        expression = removeExpressionBrackets(expression);
         List<MathExpression> mathExpressions = parse(expression);
         Context context = new Context();
         for (MathExpression terminal : mathExpressions) {
             terminal.interpret(context);
         }
-        return context.popValue();
+        int result = context.popValue();
+        LOGGER.info("Result = " + result);
+        return result;
+    }
+
+    private String removeExpressionBrackets(String expressionValue) {
+        int lastCharIndex = expressionValue.length() - 1;
+        return expressionValue.substring(SECOND_CHAR_INDEX, lastCharIndex); // [second, last)
     }
 
     private List<MathExpression> parse(String expressionString) {
