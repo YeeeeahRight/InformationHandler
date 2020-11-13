@@ -7,6 +7,7 @@ import com.epam.handler.data.model.TextLeaf;
 import com.epam.handler.logic.interpreter.ExpressionCalculator;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class TextProcessor {
@@ -63,5 +64,40 @@ public class TextProcessor {
     private String removeExpressionBrackets(String expressionValue) {
         int lastCharIndex = expressionValue.length() - 1;
         return expressionValue.substring(SECOND_CHAR_INDEX, lastCharIndex); // [second, last)
+    }
+
+    public TextComponent sortParagraphsBySentenceAmount(TextComponent text) {
+        List<TextComponent> sortedParagraphs = new ArrayList<>(text.getChildren());
+        sortedParagraphs.sort(Comparator.comparingInt(sortedParagraph -> sortedParagraph.getChildren().size()));
+        TextComposite textComposite = new TextComposite();
+        textComposite.addChildren(sortedParagraphs);
+        return textComposite;
+    }
+
+    public TextComponent sortWordsInSentences(TextComponent text) {
+        List<TextComponent> paragraphs = new ArrayList<>();
+        for (TextComponent paragraph : text.getChildren()) {
+            List<TextComponent> sentences = new ArrayList<>();
+            for (TextComponent sentence : paragraph.getChildren()) {
+                List<TextComponent> words = new ArrayList<>(sentence.getChildren());
+                sortWords(words);
+                TextComposite sentenceComposite = new TextComposite();
+                sentenceComposite.addChildren(words);
+                sentences.add(sentenceComposite);
+            }
+            TextComposite paragraphComposite = new TextComposite();
+            paragraphComposite.addChildren(sentences);
+            paragraphs.add(paragraphComposite);
+        }
+        TextComposite textComposite = new TextComposite();
+        textComposite.addChildren(paragraphs);
+        return textComposite;
+    }
+
+    private void sortWords(List<TextComponent> words) {
+        words.sort(Comparator.comparingInt(lexeme -> {
+            String lexemeValue = ((TextLeaf) lexeme).getData();
+            return lexemeValue.length();
+        }));
     }
 }
